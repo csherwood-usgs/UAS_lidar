@@ -59,7 +59,7 @@ mkdir -p temp_tiles_ground
   -ignore_class 7 0 -step 0.25 -town -ultra_fine -v  -odir temp_tiles_ground -olaz \
   -cores ${NUM_CORES}
 
-"${LASPATH}lasmerge64" -i "temp_files_ground/tile*.laz" \
+"${LASPATH}lasmerge64" -i "temp_tiles_ground/tile*.laz" \
    -v  -drop_withheld -keep_class 2 \
    -o "${OUTDIR}${INFILE_BASE}_ground.laz" -olaz
 
