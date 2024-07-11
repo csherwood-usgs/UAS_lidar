@@ -4,7 +4,7 @@ LASPATH="C:/LAStools/bin/"
 INDIR="F:/TownNeckBeach_Testing/"
 OUTDIR="F:/TownNeckBeach_Testing/"
 
-RUN="3"
+RUN="11"
 OPT="_test"
 INFILE_BASE="TNB_CLASSIFY_${RUN}"
 INPATH="${INDIR}${INFILE_BASE}.laz"
