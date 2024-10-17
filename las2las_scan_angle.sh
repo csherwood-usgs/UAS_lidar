@@ -7,21 +7,18 @@ OUTDIR="D:/crs/proj/2024_Sandwich_Surveys/Sandwich/Veg_lidar/"
 INDIR="D:/crs/proj/2024_Sandwich_Surveys/Sandwich/"
 
 RUN="01"
-OPT="_"
+OPT="_scan25"
 INPATH="${INDIR}${INFILE_BASE}.laz"
-OUTPATH="${OUTDIR}${INFILE_BASE}${OPT}.tif"
 echo ${INFILE_BASE}
 echo ${INPATH}
 
 
-"${LASPATH}lasinfo" -i ${INPATH} \
+OUTPATH="${OUTDIR}${INFILE_BASE}${OPT}.laz"
+"${LASPATH}las2las64" -i "${INPATH}" \
+   -v    -drop_abs_scan_angle_above 25 \
+   -inside 376330 4624355 377470 4625335 \
+   -olaz -o "${OUTPATH}"
+   
+"${LASPATH}lasinfo" -i ${OUTPATH} \
         -compute_density \
         -odir ${OUTDIR} -otxt
-
-
-"${LASPATH}lasgrid64" -i "${INPATH}" \
-   -v  -step 0.25 -mem 2000 -mean -keep_class 2 \
-   -inside 376330 4624355 377470 4625335 \
-   -target_epsg 26919 -vertical_navd88 \
-   -otif -populate -o "${OUTPATH}"
-
